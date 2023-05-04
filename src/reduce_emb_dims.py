@@ -2,14 +2,11 @@ import numpy as np
 from sklearn.decomposition import PCA
 import plotly.graph_objs as go
 import plotly.io as pio
+import matplotlib.pyplot as plt
 # Example embeddings
 
+
 def pca_embeddings(embeddings):
-    """embeddings = [
-        np.random.rand(1, 768),
-        np.random.rand(1, 768),
-        np.random.rand(1, 768),
-    ]"""
 
     # Convert list of embeddings to a single numpy array
     embeddings_array = np.vstack(embeddings)
@@ -20,9 +17,6 @@ def pca_embeddings(embeddings):
     reduced_embeddings = pca.fit_transform(embeddings_array)
 
     return reduced_embeddings
-# Print reduced embeddings
-
-import matplotlib.pyplot as plt
 
 # Function to plot reduced embeddings
 def plot_embeddings(embeddings, labels=None):
@@ -39,12 +33,6 @@ def plot_embeddings(embeddings, labels=None):
     plt.ylabel('Principal Component 2')
     plt.title('PCA-Reduced Embeddings')
     plt.show()
-
-"""# Example labels (optional)
-labels = ['Abstract 1', 'Abstract 2', 'Abstract 3']
-
-# Plot reduced embeddings
-plot_embeddings(reduced_embeddings, labels=labels)"""
 
 # Function to plot reduced embeddings with hover information
 def plot_embeddings_plotly(embeddings, titles):

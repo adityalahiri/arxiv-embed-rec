@@ -21,7 +21,7 @@ if __name__=="__main__":
     all_titles = []
     # Fetch abstracts and related papers' abstracts
     for paper_id in paper_ids:
-        related_papers=fetch_abstracts_and_related(paper_id)
+        related_papers=fetch_abstracts_and_related(paper_id,max_related=10)
         abstracts = [paper.summary for paper in related_papers]
         titles = [paper.title for paper in related_papers]
         all_abstracts.extend(abstracts)
@@ -31,7 +31,4 @@ if __name__=="__main__":
     embeddings = get_embeddings(all_abstracts)
     all_pca_embeddings = pca_embeddings(embeddings)
     plot_embeddings_plotly(all_pca_embeddings, all_titles)
-    plot_embeddings(all_pca_embeddings, labels=all_titles)
-    
-
-
+    #plot_embeddings(all_pca_embeddings, labels=all_titles)

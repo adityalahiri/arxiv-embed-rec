@@ -3,20 +3,13 @@ import torch
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
-# List of abstracts
-abstracts = [
-    "Abstract 1",
-    "Abstract 2",
-    "Abstract 3",
-]
-
-# Load a pre-trained model and tokenizer
-model_name = "bert-base-uncased"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModel.from_pretrained(model_name)
-
 # Function to get embeddings from abstracts
 def get_embeddings(abstracts):
+
+    # Load a pre-trained model and tokenizer
+    model_name = "bert-base-uncased"
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModel.from_pretrained(model_name)
     embeddings = []
 
     for abstract in abstracts:
@@ -32,10 +25,3 @@ def get_embeddings(abstracts):
         embeddings.append(embedding)
 
     return embeddings
-
-"""# Get embeddings for abstracts
-embeddings = get_embeddings(abstracts)
-
-# Print embeddings
-for idx, embedding in enumerate(embeddings):
-    print(f"Embedding {idx + 1}:\n{embedding}\n")"""
