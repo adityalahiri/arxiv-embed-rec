@@ -6,13 +6,12 @@ import matplotlib.pyplot as plt
 # Example embeddings
 
 
-def pca_embeddings(embeddings):
+def pca_embeddings(embeddings, n_components=2):
 
     # Convert list of embeddings to a single numpy array
     embeddings_array = np.vstack(embeddings)
 
     # Apply PCA to reduce dimensions
-    n_components = 2  # Desired number of dimensions
     pca = PCA(n_components=n_components)
     reduced_embeddings = pca.fit_transform(embeddings_array)
 
